@@ -2,40 +2,40 @@
 
 namespace
 {
-    void sorting(int* c, int before, int after)
+    void sorting(int* array, int before, int after)
     {
         if (before == after)
             return;
         int between = (before + after) / 2;
-        sorting(c, before, between);
-        sorting(c, between + 1, after);
+        sorting(array, before, between);
+        sorting(array, between + 1, after);
         int first = before;
         int second = between + 1;
         int* middle = new int[after - before + 1];
 
         for (int i = 0; i < after - before + 1; i++)
         {
-            if ((second > after) || ((first <= between) && (c[first] < c[second])))
+            if ((second > after) || ((first <= between) && (array[first] < array[second])))
             {
-                middle[i] = c[first];
+                middle[i] = array[first];
                 first++;
             }
             else
             {
-                middle[i] = c[second];
+                middle[i] = array[second];
                 second++;
             }
         }
 
         for (int i = 0; i < after - before + 1; i++)
-            c[before + i] = middle[i];
+            array[before + i] = middle[i];
         delete[] middle;
     }
 }
 namespace sort
 {
-    void sort(int* c, int dim)
+    void sort(int* array, int size)
     {
-        sorting(c, 0, dim - 1);
+        sorting(array, 0, size - 1);
     }
 }
