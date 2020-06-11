@@ -4,7 +4,7 @@
 
 namespace sort
 {
-    void sort(int* c, int dim);
+    void sort(int* array, int size);
 }
 
 
